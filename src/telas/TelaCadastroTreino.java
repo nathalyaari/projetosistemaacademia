@@ -21,10 +21,16 @@ public class TelaCadastroTreino extends javax.swing.JFrame {
      * Creates new form TelaCadastroTreino
      */
     private final int idMembro;
+    private int idMembroAtual;
+
     
     public TelaCadastroTreino(int idMembro) {
         initComponents();
         this.idMembro = idMembro;
+         this.idMembroAtual = idMembro;
+        setLocationRelativeTo(null);
+        setSize(404, 335); 
+        setResizable(false); 
         setLocationRelativeTo(null);
     }
 
@@ -41,6 +47,7 @@ public class TelaCadastroTreino extends javax.swing.JFrame {
         campoDuracao = new javax.swing.JTextField();
         campoData = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
+        campoDescricao = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,7 +106,11 @@ public class TelaCadastroTreino extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCadastrar);
-        btnCadastrar.setBounds(150, 210, 90, 30);
+        btnCadastrar.setBounds(150, 250, 90, 30);
+
+        campoDescricao.setText("Descrição");
+        getContentPane().add(campoDescricao);
+        campoDescricao.setBounds(110, 210, 180, 22);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/POPUP treino.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -117,6 +128,7 @@ public class TelaCadastroTreino extends javax.swing.JFrame {
         String tipo = campoTipo.getText().trim();
         String data = campoData.getText().trim();
         String duracao = campoDuracao.getText().trim();
+        String descricao = campoDescricao.getText().trim();
 
         if (tipo.isEmpty() || data.isEmpty() || duracao.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos.");
@@ -124,14 +136,17 @@ public class TelaCadastroTreino extends javax.swing.JFrame {
         }
 
         Treino h = new Treino();
-        h.setIdMembro(idMembro);
-        h.setTipo(tipo);
-        h.setDataInicio(data);
-        h.setDuracao(duracao);
+        h.setTipo(campoTipo.getText());
+        h.setDuracao(campoDuracao.getText());
+        h.setDataInicio(campoData.getText());
+        h.setDescricao(campoDescricao.getText());
+        h.setIdMembro(idMembroAtual);
 
         new TreinoDAO().inserir(h);
 
         JOptionPane.showMessageDialog(this, "Treino cadastrado com sucesso!");
+       
+
         this.dispose();
     
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -224,6 +239,7 @@ public class TelaCadastroTreino extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JTextField campoData;
+    private javax.swing.JTextField campoDescricao;
     private javax.swing.JTextField campoDuracao;
     private javax.swing.JTextField campoTipo;
     private javax.swing.JLabel jLabel1;

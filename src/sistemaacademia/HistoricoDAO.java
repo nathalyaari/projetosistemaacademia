@@ -9,7 +9,7 @@ public class HistoricoDAO {
     public void inserir(Historico h) {
         long inicio = System.currentTimeMillis();
 
-        String sql = "INSERT INTO historico_atividades (ID_Membro, Atividade, Data_Atividade, Tempo_Execucao) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO historico_atividades (ID_Membro, Atividade, Data, Tempo_Execucao) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -44,7 +44,7 @@ public class HistoricoDAO {
                 h.setId(rs.getInt("ID"));
                 h.setIdMembro(rs.getInt("ID_Membro"));
                 h.setAtividade(rs.getString("Atividade"));
-                h.setDataAtividade(rs.getString("Data_Atividade"));
+                h.setDataAtividade(rs.getString("Data"));
                 h.setTempoExecucao(rs.getString("Tempo_Execucao"));
                 lista.add(h);
             }
@@ -62,7 +62,7 @@ public class HistoricoDAO {
     public void atualizar(Historico h) {
         long inicio = System.currentTimeMillis();
 
-        String sql = "UPDATE historico_atividades SET ID_Membro=?, Atividade=?, Data_Atividade=?, Tempo_Execucao=? WHERE ID=?";
+        String sql = "UPDATE historico_atividades SET ID_Membro=?, Atividade=?, Data=?, Tempo_Execucao=? WHERE ID=?";
 
         try (Connection conn = conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -132,7 +132,7 @@ public class HistoricoDAO {
                 h.setId(rs.getInt("ID"));
                 h.setIdMembro(rs.getInt("ID_Membro"));
                 h.setAtividade(rs.getString("Atividade"));
-                h.setDataAtividade(rs.getString("Data_Atividade"));
+                h.setDataAtividade(rs.getString("Data"));
                 h.setTempoExecucao(rs.getString("Tempo_Execucao"));
                 lista.add(h);
             }

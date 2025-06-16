@@ -24,6 +24,9 @@ public class TelaCadastroHistorico extends javax.swing.JFrame {
     public TelaCadastroHistorico(int idMembro) {
         initComponents();
         this.idMembro = idMembro;
+        setLocationRelativeTo(null);
+        setSize(404, 335); 
+        setResizable(false); 
         setLocationRelativeTo(null); 
     }
     /**

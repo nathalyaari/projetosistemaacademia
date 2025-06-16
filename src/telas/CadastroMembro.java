@@ -26,6 +26,10 @@ public class CadastroMembro extends javax.swing.JFrame {
      */
     public CadastroMembro() {
         initComponents();
+        setSize(700, 430); // 
+        setResizable(false); 
+        setLocationRelativeTo(null); 
+
     }
 
     /**
@@ -214,15 +218,17 @@ public class CadastroMembro extends javax.swing.JFrame {
         String senha = new String(senhatxt.getPassword());
         String confirmar = new String(confirmarsenhatxt.getPassword());
         
-        if (nometxt.getText().isEmpty() ||
-        cpftxt.getText().isEmpty() ||
-        emailtxt.getText().isEmpty() ||
-        telefonetxt.getText().isEmpty() ||
-        senhatxt.getPassword().length == 0 ||
-        confirmarsenhatxt.getPassword().length == 0) {
-         
-       JOptionPane.showMessageDialog(null, "Campos vazios");
-    }
+        if (nometxt.getText().trim().isEmpty() || nometxt.getText().equals("Nome") ||
+    cpftxt.getText().trim().isEmpty() || cpftxt.getText().equals("CPF") ||
+    emailtxt.getText().trim().isEmpty() || emailtxt.getText().equals("E-mail") ||
+    telefonetxt.getText().trim().isEmpty() || telefonetxt.getText().equals("Telefone") ||
+    senhatxt.getPassword().length == 0 ||
+    confirmarsenhatxt.getPassword().length == 0) {
+
+    JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios corretamente.");
+    return;
+}
+
         
     if  (!termoschk.isSelected()) {
         JOptionPane.showMessageDialog(this, "Você precisa aceitar os termos.");

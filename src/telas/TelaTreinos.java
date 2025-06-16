@@ -28,6 +28,9 @@ public class TelaTreinos extends javax.swing.JFrame {
     public TelaTreinos() {
         initComponents();
         setLocationRelativeTo(null);
+        setSize(700, 430); // 
+        setResizable(false); 
+        setLocationRelativeTo(null); 
     }
     
     private void carregarTabela(List<Treino> lista) {
@@ -172,9 +175,11 @@ public class TelaTreinos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Busque um membro antes de adicionar.");
             return;
         }
+     System.out.println("ID do membro atual: " + idMembroAtual);
 
-        TelaCadastroHistorico tela = new TelaCadastroHistorico(idMembroAtual);
-        tela.setVisible(true);
+        TelaCadastroTreino telaCadastro = new TelaCadastroTreino(idMembroAtual);
+telaCadastro.setVisible(true);
+
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void campoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBuscaActionPerformed
@@ -274,11 +279,13 @@ carregarTabela(listaAtual);
     private void btndescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndescricaoActionPerformed
         // TODO add your handling code here:                                           
     int linha = tabelaTreinos.getSelectedRow();
+if (linha != -1) {
+    Treino t = listaAtual.get(linha);
+    JOptionPane.showMessageDialog(this, t.getDescricao(), "Descrição do Treino", JOptionPane.INFORMATION_MESSAGE);
+} else {
+    JOptionPane.showMessageDialog(this, "Selecione um treino.");
+}
 
-    if (linha == -1) {
-        JOptionPane.showMessageDialog(this, "Selecione um treino da tabela.");
-        return;
-    }
 
     Treino treinoSelecionado = listaAtual.get(linha);
     String descricao = treinoSelecionado.getDescricao();

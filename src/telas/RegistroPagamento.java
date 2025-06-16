@@ -31,6 +31,9 @@ public class RegistroPagamento extends javax.swing.JFrame {
     public RegistroPagamento() {
         initComponents();
         carregarPagamentos();
+        setSize(700, 430); 
+        setResizable(false); 
+        setLocationRelativeTo(null); 
         
     }
     

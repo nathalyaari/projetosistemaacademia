@@ -9,24 +9,36 @@ public class MembroDAO {
 
     // CREATE - Inserir membro
     public void inserirMembro(Membro m) {
-        String sql = "INSERT INTO Membros (Nome, CPF, Email, Telefone, Data_Cadastro, Senha) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    // Validação extra antes de inserir no banco
+    if (m.getNome() == null || m.getNome().trim().isEmpty() ||
+        m.getCpf() == null || m.getCpf().trim().isEmpty() ||
+        m.getEmail() == null || m.getEmail().trim().isEmpty() ||
+        m.getTelefone() == null || m.getTelefone().trim().isEmpty() ||
+        m.getDataCadastro() == null || m.getDataCadastro().trim().isEmpty() ||
+        m.getSenha() == null || m.getSenha().trim().isEmpty()) {
 
-            stmt.setString(1, m.getNome());
-            stmt.setString(2, m.getCpf());
-            stmt.setString(3, m.getEmail());
-            stmt.setString(4, m.getTelefone());
-            stmt.setString(5, m.getDataCadastro());
-            stmt.setString(6, m.getSenha());
-
-
-            stmt.executeUpdate();
-            System.out.println("Membro inserido com sucesso.");
-        } catch (SQLException e) {
-            System.out.println("Erro ao inserir membro: " + e.getMessage());
-        }
+        System.out.println("Dados inválidos. Cadastro cancelado.");
+        return;
     }
+
+    String sql = "INSERT INTO Membros (Nome, CPF, Email, Telefone, Data_Cadastro, Senha) VALUES (?, ?, ?, ?, ?, ?)";
+    try (Connection conn = conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, m.getNome());
+        stmt.setString(2, m.getCpf());
+        stmt.setString(3, m.getEmail());
+        stmt.setString(4, m.getTelefone());
+        stmt.setString(5, m.getDataCadastro());
+        stmt.setString(6, m.getSenha());
+
+        stmt.executeUpdate();
+        System.out.println("Membro inserido com sucesso.");
+    } catch (SQLException e) {
+        System.out.println("Erro ao inserir membro: " + e.getMessage());
+    }
+}
+
 
    
     public List<Membro> listarMembros() {

@@ -30,6 +30,9 @@ public class TelaHistorico extends javax.swing.JFrame {
     public TelaHistorico() {
         initComponents();
         setLocationRelativeTo(null);
+        setSize(700, 430); 
+        setResizable(false); 
+        setLocationRelativeTo(null); 
     }
     
     private void carregarTabela(List<Historico> lista) {
@@ -216,9 +219,14 @@ for (Historico h : listaAtual) {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        int linha = tabelaHistorico.getSelectedRow();
+      int linha = tabelaHistorico.getSelectedRow();
 if (linha == -1) {
     JOptionPane.showMessageDialog(this, "Selecione uma atividade para excluir.");
+    return;
+}
+
+if (listaAtual == null || listaAtual.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Nenhum dado carregado para excluir.");
     return;
 }
 
@@ -230,12 +238,11 @@ if (confirmacao != JOptionPane.YES_OPTION) {
 int id = listaAtual.get(linha).getId();
 idMembroAtual = listaAtual.get(0).getIdMembro();
 
-new HistoricoDAO().excluir(id);
+HistoricoDAO dao = new HistoricoDAO();
+dao.excluir(id);
 
-List<Historico> listaAtualizada = new HistoricoDAO().buscarPorMembro(String.valueOf(idMembroAtual));
-carregarTabela(listaAtualizada);
 
-listaAtual = new HistoricoDAO().buscarPorMembro(String.valueOf(idMembroAtual));
+listaAtual = dao.buscarPorMembro(String.valueOf(idMembroAtual));
 carregarTabela(listaAtual);
 
     }//GEN-LAST:event_btnExcluirActionPerformed

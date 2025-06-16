@@ -29,6 +29,9 @@ public class TelaPagamento extends javax.swing.JFrame {
         initComponents();
         this.tabelaPagamentos = tabela;
         this.listaAtual = lista;
+         setSize(404, 335); 
+        setResizable(false); 
+        setLocationRelativeTo(null); 
     }
 
     

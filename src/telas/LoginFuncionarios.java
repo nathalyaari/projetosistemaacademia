@@ -22,6 +22,9 @@ public class LoginFuncionarios extends javax.swing.JFrame {
      */
     public LoginFuncionarios() {
         initComponents();
+        setSize(700, 430); // 
+        setResizable(false); 
+        setLocationRelativeTo(null); 
     }
 
     /**
