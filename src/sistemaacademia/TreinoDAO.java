@@ -104,8 +104,8 @@ public class TreinoDAO {
                 h.setId(rs.getInt("ID"));
                 h.setIdMembro(rs.getInt("ID_Membro"));
                 h.setTipo(rs.getString("Tipo"));
-                h.setDescricao(rs.getString("Descrição"));
-                h.setDuracao(rs.getString("Duração"));
+                h.setDescricao(rs.getString("Descricao"));
+                h.setDuracao(rs.getString("Duracao"));
                 h.setDataInicio(rs.getString("Data_Inicio"));
                 lista.add(h);
             }

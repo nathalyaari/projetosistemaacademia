@@ -54,7 +54,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="50" y="160" width="600" height="190"/>
+          <AbsoluteConstraints x="50" y="160" width="610" height="190"/>
         </Constraint>
       </Constraints>
 
@@ -153,6 +153,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndescricaoActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="350" y="360" width="90" height="-1"/>

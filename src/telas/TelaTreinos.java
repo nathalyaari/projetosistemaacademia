@@ -104,7 +104,7 @@ public class TelaTreinos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelaTreinos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 160, 600, 190);
+        jScrollPane1.setBounds(50, 160, 610, 190);
 
         campoBusca.setText("Nome");
         campoBusca.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -151,6 +151,11 @@ public class TelaTreinos extends javax.swing.JFrame {
         btnExcluir.setBounds(570, 360, 72, 23);
 
         btndescricao.setText("Descrição");
+        btndescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndescricaoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btndescricao);
         btndescricao.setBounds(350, 360, 90, 23);
 
@@ -265,6 +270,27 @@ carregarTabela(listaAtual);
         campoBusca.setText("Nome");
         campoBusca.setForeground(Color.GRAY);
     }//GEN-LAST:event_formWindowOpened
+
+    private void btndescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndescricaoActionPerformed
+        // TODO add your handling code here:                                           
+    int linha = tabelaTreinos.getSelectedRow();
+
+    if (linha == -1) {
+        JOptionPane.showMessageDialog(this, "Selecione um treino da tabela.");
+        return;
+    }
+
+    Treino treinoSelecionado = listaAtual.get(linha);
+    String descricao = treinoSelecionado.getDescricao();
+
+    JOptionPane.showMessageDialog(this,
+    "Treino: " + treinoSelecionado.getTipo() + "\n\nDescrição:\n" + descricao,
+    "Detalhes do Treino",
+    JOptionPane.INFORMATION_MESSAGE);
+
+
+
+    }//GEN-LAST:event_btndescricaoActionPerformed
 
     /**
      * @param args the command line arguments
