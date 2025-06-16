@@ -1,0 +1,17 @@
+# Sistema de Academia
+
+Projeto Java com interface Swing e conexão MySQL usando XAMPP.  
+
+## Como executar:
+
+1. Instale o XAMPP e inicie o Apache e o MySQL.
+2. Importe o arquivo `database/sistema_academia.sql` no phpMyAdmin.
+3. Abra o projeto no NetBeans.
+4. Verifique a conexão em `conexao.java` (usuário, senha e nome do banco).
+5. Compile e execute.
+
+## Tecnologias
+- Java (Swing)
+- MySQL
+- Apache NetBeans
+- XAMPP
